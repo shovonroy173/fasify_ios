@@ -1,0 +1,27 @@
+export const featureMap = [
+  { key: 'hotelAC', title: 'AC', icon: 'snowflake' },
+  { key: 'hotelParking', title: 'Parking', icon: 'parking' },
+  { key: 'hotelWifi', title: 'Wi-Fi', icon: 'wifi' },
+  { key: 'hotelBreakfast', title: 'Breakfast', icon: 'coffee' },
+  { key: 'hotelPool', title: 'Pool', icon: 'swimming-pool' },
+  { key: 'hotelSmoking', title: 'Smoking', icon: 'smoking' },
+  { key: 'hotelTv', title: 'TV', icon: 'tv' },
+  { key: 'hotelWashing', title: 'Washing', icon: 'tshirt' },
+
+  // 🔹 New Fields
+  { key: 'hotelAccommodationType', title: 'Accommodation Type', icon: 'bed' },
+  { key: 'hotelKitchen', title: 'Kitchen', icon: 'utensils' },
+  { key: 'hotelRestaurant', title: 'Restaurant', icon: 'concierge-bell' },
+  { key: 'hotelGym', title: 'Gym', icon: 'dumbbell' },
+  { key: 'hotelSpa', title: 'Spa', icon: 'spa' },
+  { key: 'hotel24HourFrontDesk', title: '24h Front Desk', icon: 'clock' },
+  { key: 'hotelAirportShuttle', title: 'Airport Shuttle', icon: 'shuttle-van' },
+  { key: 'hotelNoSmokingPreference', title: 'No Smoking Preference', icon: 'ban' },
+  { key: 'hotelNoNSmoking', title: 'Non-Smoking', icon: 'smoking-ban' },
+  { key: 'hotelPetsAllowed', title: 'Pets Allowed', icon: 'paw' },
+  { key: 'hotelNoPetsPreferences', title: 'No Pets Preference', icon: 'times-circle' },
+  { key: 'hotelPetsNotAllowed', title: 'Pets Not Allowed', icon: 'paw' },
+  { key: 'hotelLocationFeatureWaterView', title: 'Water View', icon: 'water' },
+  { key: 'hotelLocationFeatureIsland', title: 'Island View', icon: 'umbrella-beach' },
+  { key: 'hotelCoffeeBar', title: 'Coffee Bar', icon: 'mug-hot' },
+];

@@ -1,0 +1,77 @@
+{
+  "expo": {
+    "name": "fasify",
+    "slug": "fasify",
+    "plugins": [
+      [
+        "react-native-fbsdk-next",
+        {
+          "appID": "1275248887400010",
+          "clientToken": "53bacafec4ff2f893cf574e111e2df26",
+          "displayName": "Fasify",
+          "scheme": "fb1275248887400010",
+          "advertiserIDCollectionEnabled": false,
+          "autoLogAppEventsEnabled": false,
+          "isAutoInitEnabled": true
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0064d2",
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200
+        }
+      ]
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1d4ed8"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "SKAdNetworkItems": [
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "v9wttpbfk9.skadnetwork"
+          },
+          {
+            "SKAdNetworkIdentifier": "n38lu8286q.skadnetwork"
+          }
+        ]
+      },
+      "bundleIdentifier": "com.shovon12345.fasify"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "edgeToEdgeEnabled": true,
+      "package": "com.shovon12345.fasify",
+      "permissions": [
+        "android.permission.INTERNET"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ca5c7a23-4e03-427e-89dc-daf209d21eb2"
+      }
+    }
+  }
+}

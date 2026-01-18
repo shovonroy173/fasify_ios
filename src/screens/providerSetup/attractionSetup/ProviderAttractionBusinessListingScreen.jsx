@@ -1,0 +1,332 @@
+import {
+  View,
+  KeyboardAvoidingView,
+  Platform,
+  // TouchableWithoutFeedback,
+  Keyboard,
+  ScrollView,
+} from "react-native";
+import React, { useState } from "react";
+import {
+  responsiveHeight,
+  responsiveWidth,
+} from "react-native-responsive-dimensions";
+import { Controller, useFormContext } from "react-hook-form";
+import { useNavigation } from "@react-navigation/native";
+import ThemedView from "@/utils/ThemedView";
+import GoBack from "@/components/GoBack";
+import TitleComponent from "@/components/TitleComponent";
+import ThemedTextInput from "@/utils/ThemedTextInput";
+import ThemedTextArea from "@/utils/ThemedTextArea";
+import Button from "@/components/Button";
+import MultiImageUploadUI from "@/components/MultiImageUploadUI";
+import MultiImagePickerModal from "@/components/MultiImagePickerModal";
+import { useMultiImagePicker } from "@/utils/useMultiImagePicker";
+import ThemedText3 from "@/utils/ThemedText3";
+import ThemedCheckbox from "@/utils/ThemedCheckbox";
+import WeeklyScheduleTime from "@/components/WeeklyScheduleTime";
+import ThemedText from "@/utils/ThemedText";
+import DropdownBox from "@/components/DropdownBox";
+import { countries, currencies } from "@/../assets/data/data";
+
+const ProviderAttractionBusinessListingScreen = () => {
+  const {
+    control,
+    formState: { errors },
+    setValue,
+  } = useFormContext();
+
+  const navigation = useNavigation();
+  const [modalVisible, setModalVisible] = useState(false);
+  const { pickFromGalleryMulti } = useMultiImagePicker();
+
+  return (
+    <ThemedView
+      styles="flex-1"
+      style={{
+        paddingHorizontal: responsiveWidth(6),
+        paddingVertical: responsiveHeight(5),
+        gap: responsiveHeight(5),
+      }}
+    >
+      <GoBack navigation={navigation} />
+
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 100 : 0}
+        className="flex-1"
+      >
+        {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss} className="flex-1"> */}
+        <ScrollView
+          className="flex-grow"
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{
+            gap: responsiveHeight(2),
+          }}
+        >
+          <TitleComponent
+            title="Create Attraction Listings"
+            subTitle="Please provide business information so we can setup our seller account."
+          />
+          <ThemedTextInput
+            name="attractionDestinationType"
+            control={control}
+            error={errors?.attractionDestinationType?.message}
+            label="Destination Type"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedTextArea
+            name="attractionDescription"
+            control={control}
+            error={errors?.attractionDescription?.message}
+            label="Description"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedTextInput
+            name="attractionAddress"
+            control={control}
+            error={errors?.attractionAddress?.message}
+            label="Address"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedTextInput
+            name="attractionCity"
+            control={control}
+            error={errors?.attractionCity?.message}
+            label="City"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedTextInput
+            name="attractionPostalCode"
+            control={control}
+            error={errors?.attractionPostalCode?.message}
+            label="Postal Code"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedTextInput
+            name="attractionDistrict"
+            control={control}
+            error={errors?.attractionDistrict?.message}
+            label="District / State / Province"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          {/* <ThemedTextInput
+              name="attractionCountry"
+              control={control}
+              error={errors?.attractionCountry?.message}
+              label="Country"
+              placeholder="Type here..."
+              type="text"
+            /> */}
+
+          <View style={{ flex: 1, height: responsiveHeight(8) }}>
+            <ThemedText styles={`font-Medium text-md mb-1`}>Country</ThemedText>
+            <DropdownBox
+              name="attractionCountry"
+              options={countries}
+              zIndex={900}
+            />
+          </View>
+
+          <Controller
+            name="attractionImages"
+            control={control}
+            render={({ field: { value = [], onChange } }) => (
+              <>
+                <MultiImageUploadUI
+                  value={value}
+                  label="Upload your photos (max 5)"
+                  onPress={() => setModalVisible(true)}
+                  onRemove={(idx) => {
+                    const updated = [...value];
+                    updated.splice(idx, 1);
+                    onChange(updated);
+                  }}
+                />
+
+                <MultiImagePickerModal
+                  visible={modalVisible}
+                  onClose={() => setModalVisible(false)}
+                  onPickGallery={() =>
+                    pickFromGalleryMulti(
+                      (newUris) => {
+                        const combined = [...value, ...newUris].slice(0, 5); // max 5
+                        onChange(combined);
+                      },
+                      () => setModalVisible(false)
+                    )
+                  }
+                />
+              </>
+            )}
+          />
+
+          <ThemedTextInput
+            name="attractionServicesOffered"
+            control={control}
+            error={errors?.attractionServicesOffered?.message}
+            label="Services Offered"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedText3 styles="font-Medium text-md mb-2">Amenities</ThemedText3>
+
+          <View style={{ gap: responsiveHeight(1.5) }}>
+            <ThemedCheckbox
+              label="Free WiFi"
+              name="attractionFreeWifi"
+              control={control}
+              error={errors?.attractionFreeWifi?.message}
+            />
+            <ThemedCheckbox
+              label="Free Parking"
+              name="attractionFreeParking"
+              control={control}
+              error={errors?.attractionFreeParking?.message}
+            />
+            <ThemedCheckbox
+              label="Kitchen"
+              name="attractionKitchen"
+              control={control}
+              error={errors?.attractionKitchen?.message}
+            />
+            <ThemedCheckbox
+              label="TV"
+              name="attractionTv"
+              control={control}
+              error={errors?.attractionTv?.message}
+            />
+            <ThemedCheckbox
+              label="Air Conditioning"
+              name="attractionAirConditioning"
+              control={control}
+              error={errors?.attractionAirConditioning?.message}
+            />
+            <ThemedCheckbox
+              label="Pool"
+              name="attractionPool"
+              control={control}
+              error={errors?.attractionPool?.message}
+            />
+          </View>
+
+          <ThemedTextInput
+            name="attractionRating"
+            control={control}
+            error={errors?.attractionRating?.message}
+            label="Rating"
+            placeholder="Under 5.."
+            type="number"
+          />
+          <View>
+            <ThemedText styles={`  font-Medium text-md mb-1`}>
+              Currency
+            </ThemedText>
+            <DropdownBox name="currency" options={currencies} zIndex={1000} />
+          </View>
+
+          <ThemedTextInput
+            name="attractionAdultPrice"
+            control={control}
+            error={errors?.attractionAdultPrice?.message}
+            label="Adult Price"
+            placeholder="Type here..."
+            type="number"
+          />
+
+          <ThemedTextInput
+            name="attractionChildPrice"
+            control={control}
+            error={errors?.attractionChildPrice?.message}
+            label="Child Price"
+            placeholder="Type here..."
+            type="number"
+          />
+
+          <ThemedTextInput
+            name="category"
+            control={control}
+            error={errors?.category?.message}
+            label="Category"
+            placeholder="Type here..."
+            type="text"
+          />
+
+          <ThemedTextInput
+            name="discount"
+            control={control}
+            error={errors?.discount?.message}
+            label="Discount (%)"
+            placeholder="Type here..."
+            type="number"
+          />
+          {/* 
+            <ThemedTextInput
+              name="vat"
+              control={control}
+              error={errors?.vat?.message}
+              label="VAT (%)"
+              placeholder="Type here..."
+              type="number"
+            /> */}
+          <WeeklyScheduleTime
+            name="attractionSchedule"
+            onScheduleSave={(data) => setValue("attractionSchedule", data)}
+          />
+        </ScrollView>
+        {/* </TouchableWithoutFeedback> */}
+        <View
+          style={{
+            marginVertical: responsiveHeight(3),
+          }}
+        >
+          <Button
+            title="Continue"
+            navigation={navigation}
+            path="ProviderAttractionBusinessListingReview"
+            ids={[
+              "attractionDestinationType",
+              "attractionDescription",
+              "attractionAddress",
+              "attractionCity",
+              "attractionPostalCode",
+              "attractionDistrict",
+              "attractionCountry",
+              "attractionImages",
+              "attractionServicesOffered",
+              // 'attractionFreeWifi',
+              // 'attractionFreeParking',
+              // 'attractionKitchen',
+              // 'attractionTv',
+              // 'attractionAirConditioning',
+              // 'attractionPool',
+              "attractionRating",
+              "attractionAdultPrice",
+              "attractionChildPrice",
+              "category",
+              "discount",
+              "currency",
+              "attractionSchedule",
+            ]}
+            noicon={true}
+          />
+        </View>
+      </KeyboardAvoidingView>
+    </ThemedView>
+  );
+};
+
+export default ProviderAttractionBusinessListingScreen;
