@@ -126,6 +126,7 @@ const Button = ({
     selectedActiveListingCar,
     // selectedActiveListingAttraction,
     selectedActiveBusinessCar,
+    regEmail
   } = getValues();
 
   console.log("LINE AT 103", selectedActiveListingSecurityGuard);
@@ -205,11 +206,12 @@ const Button = ({
 
       // not added this(final solution)
       if (isVerifyCode) {
+        finalPayload.email = regEmail
         finalPayload.otp = payload.otp;
       }
 
       if (isEmailVerify) {
-        finalPayload.email = providerRegEmail;
+        finalPayload.email = providerRegEmail || regEmail;
         finalPayload.otp = payload.otp;
         // const fcmToken = await messaging().getToken();
         // console.log('FCM Token:', fcmToken);
