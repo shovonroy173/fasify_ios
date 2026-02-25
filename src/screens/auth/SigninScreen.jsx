@@ -411,10 +411,10 @@ const SigninScreen = () => {
                 </View>
 
                 <ThemedView styles="gap-5">
-                  <ThemedText3 styles="font-Medium text-center">
+                  {/* <ThemedText3 styles="font-Medium text-center">
                     {t("signin.or")}
-                  </ThemedText3>
-
+                  </ThemedText3> */}
+{/* 
                   <ThemedView styles="flex-row items-center justify-center gap-2">
                     <ThemedPressable2
                       onPress={handleFacebookLogin}
@@ -465,9 +465,9 @@ const SigninScreen = () => {
                         <Image source={require('assets/images/apple.png')} style={{ width: responsiveWidth(7), height: responsiveHeight(4) }} />
                       </ThemedPressable2>
                     )}
-                  </ThemedView>
+                  </ThemedView> */}
 
-                  <ThemedView styles="flex-row items-center justify-center gap-2">
+                  <ThemedView styles="flex-row items-center justify-center mt-4 gap-2">
                     <ThemedText3 styles="font-Medium">
                       {t("signin.no_account")}
                     </ThemedText3>

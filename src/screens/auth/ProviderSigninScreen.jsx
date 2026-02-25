@@ -329,11 +329,11 @@ const ProviderSigninScreen = () => {
                 </View>
 
                 <ThemedView styles="gap-5">
-                  <ThemedText3 styles="font-Medium text-center">
+                  {/* <ThemedText3 styles="font-Medium text-center">
                     {t("signin.or")}
-                  </ThemedText3>
+                  </ThemedText3> */}
 
-                  <ThemedView styles="flex-row items-center justify-center gap-2">
+                  {/* <ThemedView styles="flex-row items-center justify-center gap-2">
                     <ThemedPressable2
                       onPress={handleFacebookLogin}
                       styles="flex-row items-center justify-center rounded-md"
@@ -367,7 +367,7 @@ const ProviderSigninScreen = () => {
                         }}
                       />
                     </ThemedPressable2>
-                  </ThemedView>
+                  </ThemedView> */}
 
                   <ThemedView styles="flex-row items-center justify-center gap-2">
                     <ThemedText3 styles="font-Medium">

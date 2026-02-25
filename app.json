@@ -68,7 +68,7 @@
         ],
         "ITSAppUsesNonExemptEncryption": false
       },
-      "bundleIdentifier": "com.shovon12345.fasify"
+      "bundleIdentifier": "com.tim.fasify"
     },
     "android": {
       "adaptiveIcon": {
@@ -76,7 +76,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.shovon12345.fasify",
+      "package": "com.tim.fasify",
       "permissions": [
         "android.permission.INTERNET"
       ]
